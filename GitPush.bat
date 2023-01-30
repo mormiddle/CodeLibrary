@@ -1,31 +1,32 @@
-title GIT提交批处理——小二三不乌
+@echo off
+title GIT�ύ����������С��������
 color 16
 
+echo ��ʼ�ύ���뵽���زֿ�
+echo ��ǰĿ¼�ǣ�%cd%
 
-echo 开始提交代码到本地仓库
-echo 当前目录是：%cd%
-
-echo 开始添加变更
+echo ��ʼ���ӱ��
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 git add -A .
-echo 执行结束！
+echo ִ�н�����
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo;
-echo 提交变更到本地仓库
+echo �ύ��������زֿ�
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-set /p declation=输入修改:
+for /f "tokens=1-4 delims=: " %%a in ('time /t') do (set mytime=%%a%%b)
+set declation=%date% %mytime%
 git commit -m "%declation%"
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo;
-echo 将变更情况提交到远程git服务器
+echo ���������ύ��Զ��git������
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 git push origin master
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo;
-echo 批处理执行完毕！
+echo ������ִ����ϣ�
 echo;
 
 pause
