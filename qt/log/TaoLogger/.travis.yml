@@ -1,0 +1,24 @@
+﻿language: cpp
+sudo: required
+compiler: gcc
+env: QT_BASE="512"
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      cache:
+        apt: true
+        directories:
+            - /opt/qt512/
+    - os: osx
+      osx_image: xcode10.2
+
+group: deprecated-2019Q1
+before_install:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then chmod a+x ./scripts/macos/install.sh;  ./scripts/macos/install.sh; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then chmod a+x ./scripts/ubuntu/install.sh; ./scripts/ubuntu/install.sh; fi
+script:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then chmod a+x ./scripts/macos/build.sh; ./scripts/macos/build.sh; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then chmod a+x ./scripts/ubuntu/build.sh; ./scripts/ubuntu/build.sh; fi
+notifications:
+    email: false
