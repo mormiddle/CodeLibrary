@@ -14,7 +14,7 @@ echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo;
 echo 提交变更到本地仓库
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-for /f "tokens=1-4 delims=: " %%a in ('time /t') do (set mytime=%%a%%b)
+for /f "tokens=1-4 delims=: " %%a in ('time /t') do (set mytime=%%a:%%b)
 set declation=%date% %mytime%
 git commit -m "%declation%"
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

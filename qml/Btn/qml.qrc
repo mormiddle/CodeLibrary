@@ -2,6 +2,11 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>SLTextBtn.qml</file>
-        <file>SLTextBtn_use.qml</file>
+        <file>SLImageBtn.qml</file>
+        <file>SLImgTextBtn.qml</file>
+        <file>emotion-happy.png</file>
+        <file>smiling-face.png</file>
+        <file>upside-down-face.png</file>
+        <file>worried-face.png</file>
     </qresource>
 </RCC>
