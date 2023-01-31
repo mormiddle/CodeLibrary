@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>SLDragRect.qml</file>
+        <file>SLMoveArea.qml</file>
+        <file>SLResizeBorder.qml</file>
+    </qresource>
+</RCC>
