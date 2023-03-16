@@ -1,0 +1,6 @@
+﻿  main.cpp
+  mainwindow.cpp
+  qcustomplot.cpp
+  moc_mainwindow.cpp
+  moc_qcustomplot.cpp
+  mydemo.vcxproj -> F:\code\CodeLibrary\qt\chart\Heartmap\mydemo\debug\mydemo.exe
