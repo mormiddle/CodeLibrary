@@ -442,14 +442,14 @@ void CustomColorMap::initCustomPlot()
         }
     }
 
-    //添加一个渐变色
+    //添加一个颜色图例
     QCPColorScale *colorScale = new QCPColorScale(plot);
     plot->plotLayout()->addElement(0, 1, colorScale);
     colorScale->setType(QCPAxis::atRight);
     colorMap->setColorScale(colorScale);
     colorScale->axis()->setLabel("Magnetic Field Strength");
 
-    //设置 colorMap 的渐变，使其呈现极坐标颜色映射效果
+    //设置 colorMap 的颜色图例，使其呈现极坐标颜色映射效果
     colorMap->setGradient(QCPColorGradient::gpPolar);
 
     colorMap->rescaleDataRange();
