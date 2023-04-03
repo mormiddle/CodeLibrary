@@ -46,7 +46,7 @@ void SlApp::init(const QString &codecName, const QString &appVersion)
     }
 
     m_appCodecName = codecName;
-    m_appCodec = QTextCodec::codecForName( m_appCodecName.toUtf8().data() );
+    m_appCodec = QTextCodec::codecForName( m_appCodecName.toUtf8().data() ); 
     QTextCodec::setCodecForLocale( m_appCodec );
 
     SlLog::init();
@@ -65,9 +65,9 @@ void SlApp::init(const QString &codecName, const QString &appVersion)
     {
         QFileInfo fileInfo( m_appPath);
         QString file = fileInfo.fileName().toLower();
-        if( file == "debug"     ||
-            file == "release"   ||
-            file == "x64")
+        if( file == "debug"     
+            || file == "release"   
+            || file == "x64")
         {
             m_appPath = fileInfo.path();
             continue;
