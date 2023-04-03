@@ -1,4 +1,4 @@
-#ifndef SLQMLCUSTOMPLOT_H
+﻿#ifndef SLQMLCUSTOMPLOT_H
 #define SLQMLCUSTOMPLOT_H
 
 #include <QtQuick>
@@ -38,7 +38,6 @@ public slots:
 public:
     QCPColorMap* heatmap;
     int m_px = 0;
-    int m_py = 0;
     QVector<QString> hours ;
     QVector<QString> days = { "通道1", "通道2", "通道3","通道4", "通道5",
                             "通道6", "通道7", "通道8", "通道9", "通道10" };

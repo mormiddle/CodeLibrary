@@ -89,5 +89,24 @@
 
 
 
+## 二、QmlHeardMap
+
+基于slqmlcustomplot的子类CustomColorMap，来实现将十个通道传输来的值在热力图上面进行显示
+
+随着数据量的增大，对现有热力图进行压缩
+
+### 1. labelPositions
+
+- labelPositions是一个坐标轴标签位置函数，为了使得颜色图和坐标轴数值进行对应
+- 传入数据和偏移值，将数据进行0.5格的偏移，将数据和颜色图的位置一一对应
+
+### 2. 一些变量
+
+- m_px、hours、days和myArray
+  - m_px和hours都是用来记录x轴的数据量，hours用在图表初始化的阶段，m_px用在图表更新的时候，后续尝试调整为一个变量
+  - days用于存储十个通道的标签
+  - myArray用来存储具体的随机值
+- 
+
 
 
