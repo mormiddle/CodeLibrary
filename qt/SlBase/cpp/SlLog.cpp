@@ -162,3 +162,65 @@ void outputMessage( QtMsgType msgType, const QMessageLogContext& context, const 
     mutex.unlock();
 
 }
+
+QtMessageHandler SlLog::getPrevMessageHandler()
+{
+    return m_prevMessageHandler;
+}
+
+bool SlLog::init()
+{
+    if( NULL == m_prevMessageHandler )
+    {
+        m_prevMessageHandler = qInstallMessageHandler( outputMessage );
+    }
+    return ( NULL != m_prevMessageHandler );
+}
+
+void SlLog::reset()
+{
+    qInstallMessageHandler( NULL );
+    m_prevMessageHandler = NULL;
+}
+
+void SlLog::trace(const QString &file, int line, const QString &func, const QString &msg)
+{
+    QMessageLogger( file.toUtf8().data(), line, func.toUtf8().data() )
+            .info(QString( "[trace]" ).append( msg ).toUtf8().data() );
+}
+
+bool SlLog::purgeExpiredFiles()
+{
+    SlIni ini;
+
+    return  false;
+}
+
+void SlLog::test()
+{
+    qInfo( "qInfo" );
+    qInfo( "qDebug" );
+    qInfo( "qWanging" );
+    qInfo( "QCritical" );
+
+}
+
+_SlLogFunc::_SlLogFunc(const QString &file, int line, const QString &func)
+{
+    m_msEntry = SlTime::getMs();
+
+    m_file = file;
+    m_line = line;
+    m_func = func;
+
+    QMessageLogger( file.toUtf8().data(), line, func.toUtf8().data() )
+            .info( "[trace] --- FuncEntry" );
+}
+
+_SlLogFunc::~_SlLogFunc()
+{
+    double ms = SlTime::getMs() - m_msEntry;
+
+    QMessageLogger( m_file.toUtf8().data(), m_line, m_func.toUtf8().data() )
+            .info( QString( "[trace] --- FuncExit, %1 ms" ).arg( ms ).toUtf8().data() );
+}

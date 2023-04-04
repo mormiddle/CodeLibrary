@@ -65,9 +65,9 @@ void SlApp::init(const QString &codecName, const QString &appVersion)
     {
         QFileInfo fileInfo( m_appPath);
         QString file = fileInfo.fileName().toLower();
-        if( file == "debug"     ||
-            file == "release"   ||
-            file == "x64")
+        if( file == "debug"
+            || file == "release"
+            || file == "x64")
         {
             m_appPath = fileInfo.path();
             continue;
