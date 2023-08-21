@@ -35,3 +35,6 @@ public:
 
 };
 
+#define SlLog_logFunc()  _SlLogFunc _slf( __FILE__, __LINE__, __FUNCTION__ )
+
+#define SlLog_trace( msg ) SlLog::trace( __FILE__, __LINE__, __FUNCTION__, (msg) )

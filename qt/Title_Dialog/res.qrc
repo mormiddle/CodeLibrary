@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/black.css</file>
+        <file>res/fontawesome-webfont.ttf</file>
+        <file>res/Jy.png</file>
+    </qresource>
+</RCC>

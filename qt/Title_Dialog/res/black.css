@@ -1,0 +1,46 @@
+QPalette{background:#464646;}*{outline:0px;color:#F0F0F0;}
+
+QWidget[form="true"],QLabel[frameShape="1"]{
+border:1px solid #353535;
+border-radius:0px;
+}
+
+
+QWidget[form="title"],QWidget[nav="left"],QWidget[nav="top"] QAbstractButton{
+border-style:none;
+border-radius:0px;
+padding:5px;
+color:#F0F0F0;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #4D4D4D,stop:1 #383838);
+}
+
+
+.QToolButton{
+border-style:none;
+border:1px solid #353535;
+color:#F0F0F0;
+padding:5px;
+min-height:15px;
+border-radius:5px;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #4D4D4D,stop:1 #383838);
+}
+
+
+.QToolButton::menu-indicator{
+image:None;
+}
+
+QToolButton#btnMenu,QPushButton#btnMenu_Min,QPushButton#btnMenu_Max,QPushButton#btnMenu_Close{
+border-radius:3px;
+color:#F0F0F0;
+padding:3px;
+margin:0px;
+background:none;
+border-style:none;
+}
+
+QToolButton#btnMenu:hover,QPushButton#btnMenu_Min:hover,QPushButton#btnMenu_Max:hover{
+color:#FFFFFF;
+margin:1px 1px 2px 1px;
+background-color:rgba(51,127,209,230);
+}
