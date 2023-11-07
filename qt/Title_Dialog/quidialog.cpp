@@ -1,5 +1,167 @@
 #include "quidialog.h"
 
+//初始化控件(布局)
+void QuiDialog::initControl()
+{
+    this->setObjectName(QString::fromUtf8("QuiDialog"));;
+    this->resize(900, 750);
+
+    verticalLayout1 = new QVBoxLayout(this);
+    verticalLayout1->setSpacing(0);
+    verticalLayout1->setObjectName(QString::fromUtf8("verticalLayout1"));
+    verticalLayout1->setContentsMargins(1, 1, 1, 1);//设置控件上下左右的间隔
+    widgetMain = new QWidget(this);
+    widgetMain->setObjectName(QString::fromUtf8("widgetMain"));
+    widgetMain->setStyleSheet(QString::fromUtf8(""));
+
+    verticalLayout2 = new QVBoxLayout(widgetMain);
+    verticalLayout2->setSpacing(0);
+    verticalLayout2->setObjectName(QString::fromUtf8("verticalLayout2"));
+    verticalLayout2->setContentsMargins(0, 0, 0, 0);
+    widgetTitle = new QWidget(widgetMain);
+    widgetTitle->setObjectName(QString::fromUtf8("widgetTitle"));
+    QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    sizePolicy.setHorizontalStretch(0);
+    sizePolicy.setVerticalStretch(0);
+    sizePolicy.setHeightForWidth(widgetTitle->sizePolicy().hasHeightForWidth());
+    widgetTitle->setSizePolicy(sizePolicy);
+    widgetTitle->setMinimumSize(QSize(0, 30));
+
+    //标题图标
+    horizontalLayout4 = new QHBoxLayout(widgetTitle);
+    horizontalLayout4->setSpacing(0);
+    horizontalLayout4->setObjectName(QString::fromUtf8("horizontalLayout4"));
+    horizontalLayout4->setContentsMargins(10, 0, 0, 0); //修改标题控件的间隔
+    labIco = new QLabel(widgetTitle);
+    labIco->setObjectName(QString::fromUtf8("labIco"));
+    QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Minimum);
+    sizePolicy1.setHorizontalStretch(0);
+    sizePolicy1.setVerticalStretch(0);
+    sizePolicy1.setHeightForWidth(labIco->sizePolicy().hasHeightForWidth());
+    labIco->setSizePolicy(sizePolicy1);
+    labIco->setMinimumSize(QSize(30, 0));
+    labIco->setAlignment(Qt::AlignCenter);
+    horizontalLayout4->addWidget(labIco);
+
+    //标题栏
+    labTitle = new QLabel(widgetTitle);
+    labTitle->setObjectName(QString::fromUtf8("labTitle"));
+    QFont font;
+    font.setPixelSize(20);
+    labTitle->setFont(font);
+    QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    sizePolicy2.setHorizontalStretch(0);
+    sizePolicy2.setVerticalStretch(0);
+    sizePolicy2.setHeightForWidth(labTitle->sizePolicy().hasHeightForWidth());
+    labTitle->setSizePolicy(sizePolicy2);
+    labTitle->setAlignment(Qt::AlignLeading | Qt::AlignLeft | Qt::AlignVCenter);
+    horizontalLayout4->addWidget(labTitle);
+
+    //标题菜单(不启用)
+    widgetMenu = new QWidget(widgetTitle);
+    widgetMenu->setObjectName(QString::fromUtf8("widgetMenu"));
+    sizePolicy1.setHeightForWidth(widgetMenu->sizePolicy().hasHeightForWidth());
+    widgetMenu->setSizePolicy(sizePolicy1);
+    horizontalLayout = new QHBoxLayout(widgetMenu);
+    horizontalLayout->setSpacing(0);
+    horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+    horizontalLayout->setContentsMargins(0, 0, 0, 0);
+//    btnMenu = new QToolButton(widgetMenu);
+//    btnMenu->setObjectName(QString::fromUtf8("btnMenu"));
+    QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Expanding);
+    sizePolicy3.setHorizontalStretch(0);
+    sizePolicy3.setVerticalStretch(0);
+//    sizePolicy3.setHeightForWidth(btnMenu->sizePolicy().hasHeightForWidth());
+//    btnMenu->setSizePolicy(sizePolicy3);
+//    btnMenu->setMinimumSize(QSize(30, 0));
+//    btnMenu->setMaximumSize(QSize(30, 16777215));
+//    btnMenu->setFocusPolicy(Qt::NoFocus);
+//    btnMenu->setPopupMode(QToolButton::InstantPopup);
+
+//    horizontalLayout->addWidget(btnMenu);
+
+    btnMenu_Min = new QPushButton(widgetMenu);
+    btnMenu_Min->setObjectName(QString::fromUtf8("btnMenu_Min"));
+    QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    sizePolicy4.setHorizontalStretch(0);
+    sizePolicy4.setVerticalStretch(0);
+    sizePolicy4.setHeightForWidth(btnMenu_Min->sizePolicy().hasHeightForWidth());
+    btnMenu_Min->setSizePolicy(sizePolicy4);
+    btnMenu_Min->setMinimumSize(QSize(30, 0));
+    btnMenu_Min->setMaximumSize(QSize(30, 16777215));
+    btnMenu_Min->setCursor(QCursor(Qt::ArrowCursor));
+    btnMenu_Min->setFocusPolicy(Qt::NoFocus);
+    horizontalLayout->addWidget(btnMenu_Min);
+
+    btnMenu_Max = new QPushButton(widgetMenu);
+    btnMenu_Max->setObjectName(QString::fromUtf8("btnMenu_Max"));
+    sizePolicy3.setHeightForWidth(btnMenu_Max->sizePolicy().hasHeightForWidth());
+    btnMenu_Max->setSizePolicy(sizePolicy3);
+    btnMenu_Max->setMinimumSize(QSize(30, 0));
+    btnMenu_Max->setMaximumSize(QSize(30, 16777215));
+    btnMenu_Max->setCursor(QCursor(Qt::ArrowCursor));
+    btnMenu_Max->setFocusPolicy(Qt::NoFocus);
+    horizontalLayout->addWidget(btnMenu_Max);
+
+    btnMenu_Close = new QPushButton(widgetMenu);
+    btnMenu_Close->setObjectName(QString::fromUtf8("btnMenu_Close"));
+    sizePolicy3.setHeightForWidth(btnMenu_Close->sizePolicy().hasHeightForWidth());
+    btnMenu_Close->setSizePolicy(sizePolicy3);
+    btnMenu_Close->setMinimumSize(QSize(30, 0));
+    btnMenu_Close->setMaximumSize(QSize(30, 16777215));
+    btnMenu_Close->setCursor(QCursor(Qt::ArrowCursor));
+    btnMenu_Close->setFocusPolicy(Qt::NoFocus);
+    horizontalLayout->addWidget(btnMenu_Close);
+
+    horizontalLayout4->addWidget(widgetMenu);
+    verticalLayout2->addWidget(widgetTitle);
+
+    widget = new QWidget(widgetMain);
+    widget->setObjectName(QString::fromUtf8("widget"));
+    verticalLayout3 = new QVBoxLayout(widget);
+    verticalLayout3->setSpacing(0);
+    verticalLayout3->setObjectName(QString::fromUtf8("verticalLayout3"));
+    verticalLayout3->setContentsMargins(0, 0, 0, 0);
+
+    verticalLayout2->addWidget(widget);
+    verticalLayout1->addWidget(widgetMain);
+
+    connect(this->btnMenu_Min, SIGNAL(clicked(bool)), this, SLOT(on_btnMenu_Min_clicked()));
+    connect(this->btnMenu_Max, SIGNAL(clicked(bool)), this, SLOT(on_btnMenu_Max_clicked()));
+    connect(this->btnMenu_Close, SIGNAL(clicked(bool)), this, SLOT(on_btnMenu_Close_clicked()));
+}
+
+void QuiDialog::initForm()
+{
+    setIcon(QuiDialog::Lab_Ico, QUIConfig::IconMain, 11);
+//    setIcon(QuiDialog::BtnMenu, QUIConfig::IconMenu);
+    setIcon(QuiDialog::BtnMenu_Min, QUIConfig::IconMin, 15);
+    setIcon(QuiDialog::BtnMenu_Normal, QUIConfig::IconNormal, 15);
+    setIcon(QuiDialog::BtnMenu_Close, QUIConfig::IconClose, 15);
+
+    this->max = false;
+    this->location = this->geometry();
+    this->setProperty("from", true);
+    this->widgetTitle->setProperty("form", "title");
+    this->setWindowFlags((Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinMaxButtonsHint));
+
+    //设置标题及对齐方式
+    title = "全聚焦相控阵控制软件";
+    alignment = Qt::AlignLeft | Qt::AlignVCenter;
+    minHide = false;
+    mainWidget = 0;
+
+    setVisible(QuiDialog::BtnMenu, false);
+
+    //绑定事件过滤器监听鼠标移动
+    this->installEventFilter(this);
+    this->widgetTitle->installEventFilter(this);
+
+    //设置黑色皮肤
+    QString qssFile = ":/res/black.css";
+    qssFile = ":/res/black.css";
+    setStyle();
+}
 
 
 int QuiDialog::deskWidth()
@@ -14,6 +176,7 @@ int QuiDialog::deskHeight()
 
 void QuiDialog::setStyle()
 {
+    //添加css配置文件，设置主题颜色
     QString qssFile = ":/res/black.css";
 
     QFile file(qssFile);
@@ -30,6 +193,7 @@ void QuiDialog::setStyle()
 
 void QuiDialog::setFormInCenter(QWidget *frm)
 {
+    //设置窗口居中
     int frmX = frm->width();
     int frmY = frm->height();
     QDesktopWidget w;
@@ -53,6 +217,7 @@ QuiDialog::~QuiDialog()
 
 bool QuiDialog::eventFilter(QObject *obj, QEvent *evt)
 {
+    //设置鼠标事件，双击最大化，长按移动窗口
     static QPoint mousePoint;
     static bool mousePressed = false;
 
@@ -132,172 +297,6 @@ QSize QuiDialog::minimumSizeHint() const
 {
     return QSize(200, 150);
 }
-
-void QuiDialog::initControl()
-{
-    this->setObjectName(QString::fromUtf8("QuiDialog"));;
-    this->resize(900, 750);
-    verticalLayout1 = new QVBoxLayout(this);
-    verticalLayout1->setSpacing(0);
-    verticalLayout1->setContentsMargins(11, 11, 11, 11);
-    verticalLayout1->setObjectName(QString::fromUtf8("verticalLayout1"));
-    verticalLayout1->setContentsMargins(1, 1, 1, 1);
-    widgetMain = new QWidget(this);
-    widgetMain->setObjectName(QString::fromUtf8("widgetMain"));
-    widgetMain->setStyleSheet(QString::fromUtf8(""));
-    verticalLayout2 = new QVBoxLayout(widgetMain);
-    verticalLayout2->setSpacing(0);
-    verticalLayout2->setContentsMargins(11, 11, 11, 11);
-    verticalLayout2->setObjectName(QString::fromUtf8("verticalLayout2"));
-    verticalLayout2->setContentsMargins(0, 0, 0, 0);
-    widgetTitle = new QWidget(widgetMain);
-    widgetTitle->setObjectName(QString::fromUtf8("widgetTitle"));
-    QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    sizePolicy.setHorizontalStretch(0);
-    sizePolicy.setVerticalStretch(0);
-    sizePolicy.setHeightForWidth(widgetTitle->sizePolicy().hasHeightForWidth());
-    widgetTitle->setSizePolicy(sizePolicy);
-    widgetTitle->setMinimumSize(QSize(0, 30));
-    horizontalLayout4 = new QHBoxLayout(widgetTitle);
-    horizontalLayout4->setSpacing(0);
-    horizontalLayout4->setContentsMargins(11, 11, 11, 11);
-    horizontalLayout4->setObjectName(QString::fromUtf8("horizontalLayout4"));
-    horizontalLayout4->setContentsMargins(10, 0, 0, 0);
-    labIco = new QLabel(widgetTitle);
-    labIco->setObjectName(QString::fromUtf8("labIco"));
-    QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Minimum);
-    sizePolicy1.setHorizontalStretch(0);
-    sizePolicy1.setVerticalStretch(0);
-    sizePolicy1.setHeightForWidth(labIco->sizePolicy().hasHeightForWidth());
-    labIco->setSizePolicy(sizePolicy1);
-    labIco->setMinimumSize(QSize(30, 0));
-    labIco->setAlignment(Qt::AlignCenter);
-
-    horizontalLayout4->addWidget(labIco);
-
-    labTitle = new QLabel(widgetTitle);
-    labTitle->setObjectName(QString::fromUtf8("labTitle"));
-    QFont font;
-    font.setPixelSize(20);
-    labTitle->setFont(font);
-    QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    sizePolicy2.setHorizontalStretch(0);
-    sizePolicy2.setVerticalStretch(0);
-    sizePolicy2.setHeightForWidth(labTitle->sizePolicy().hasHeightForWidth());
-    labTitle->setSizePolicy(sizePolicy2);
-    labTitle->setAlignment(Qt::AlignLeading | Qt::AlignLeft | Qt::AlignVCenter);
-
-    horizontalLayout4->addWidget(labTitle);
-
-    widgetMenu = new QWidget(widgetTitle);
-    widgetMenu->setObjectName(QString::fromUtf8("widgetMenu"));
-    sizePolicy1.setHeightForWidth(widgetMenu->sizePolicy().hasHeightForWidth());
-    widgetMenu->setSizePolicy(sizePolicy1);
-    horizontalLayout = new QHBoxLayout(widgetMenu);
-    horizontalLayout->setSpacing(0);
-    horizontalLayout->setContentsMargins(11, 11, 11, 11);
-    horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-    horizontalLayout->setContentsMargins(0, 0, 0, 0);
-//    btnMenu = new QToolButton(widgetMenu);
-//    btnMenu->setObjectName(QString::fromUtf8("btnMenu"));
-    QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Expanding);
-    sizePolicy3.setHorizontalStretch(0);
-    sizePolicy3.setVerticalStretch(0);
-//    sizePolicy3.setHeightForWidth(btnMenu->sizePolicy().hasHeightForWidth());
-//    btnMenu->setSizePolicy(sizePolicy3);
-//    btnMenu->setMinimumSize(QSize(30, 0));
-//    btnMenu->setMaximumSize(QSize(30, 16777215));
-//    btnMenu->setFocusPolicy(Qt::NoFocus);
-//    btnMenu->setPopupMode(QToolButton::InstantPopup);
-
-//    horizontalLayout->addWidget(btnMenu);
-
-    btnMenu_Min = new QPushButton(widgetMenu);
-    btnMenu_Min->setObjectName(QString::fromUtf8("btnMenu_Min"));
-    QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Expanding);
-    sizePolicy4.setHorizontalStretch(0);
-    sizePolicy4.setVerticalStretch(0);
-    sizePolicy4.setHeightForWidth(btnMenu_Min->sizePolicy().hasHeightForWidth());
-    btnMenu_Min->setSizePolicy(sizePolicy4);
-    btnMenu_Min->setMinimumSize(QSize(30, 0));
-    btnMenu_Min->setMaximumSize(QSize(30, 16777215));
-    btnMenu_Min->setCursor(QCursor(Qt::ArrowCursor));
-    btnMenu_Min->setFocusPolicy(Qt::NoFocus);
-
-    horizontalLayout->addWidget(btnMenu_Min);
-
-    btnMenu_Max = new QPushButton(widgetMenu);
-    btnMenu_Max->setObjectName(QString::fromUtf8("btnMenu_Max"));
-    sizePolicy3.setHeightForWidth(btnMenu_Max->sizePolicy().hasHeightForWidth());
-    btnMenu_Max->setSizePolicy(sizePolicy3);
-    btnMenu_Max->setMinimumSize(QSize(30, 0));
-    btnMenu_Max->setMaximumSize(QSize(30, 16777215));
-    btnMenu_Max->setCursor(QCursor(Qt::ArrowCursor));
-    btnMenu_Max->setFocusPolicy(Qt::NoFocus);
-
-    horizontalLayout->addWidget(btnMenu_Max);
-
-    btnMenu_Close = new QPushButton(widgetMenu);
-    btnMenu_Close->setObjectName(QString::fromUtf8("btnMenu_Close"));
-    sizePolicy3.setHeightForWidth(btnMenu_Close->sizePolicy().hasHeightForWidth());
-    btnMenu_Close->setSizePolicy(sizePolicy3);
-    btnMenu_Close->setMinimumSize(QSize(30, 0));
-    btnMenu_Close->setMaximumSize(QSize(30, 16777215));
-    btnMenu_Close->setCursor(QCursor(Qt::ArrowCursor));
-    btnMenu_Close->setFocusPolicy(Qt::NoFocus);
-
-    horizontalLayout->addWidget(btnMenu_Close);
-    horizontalLayout4->addWidget(widgetMenu);
-    verticalLayout2->addWidget(widgetTitle);
-
-    widget = new QWidget(widgetMain);
-    widget->setObjectName(QString::fromUtf8("widget"));
-    verticalLayout3 = new QVBoxLayout(widget);
-    verticalLayout3->setSpacing(0);
-    verticalLayout3->setContentsMargins(11, 11, 11, 11);
-    verticalLayout3->setObjectName(QString::fromUtf8("verticalLayout3"));
-    verticalLayout3->setContentsMargins(0, 0, 0, 0);
-
-    verticalLayout2->addWidget(widget);
-    verticalLayout1->addWidget(widgetMain);
-
-    connect(this->btnMenu_Min, SIGNAL(clicked(bool)), this, SLOT(on_btnMenu_Min_clicked()));
-    connect(this->btnMenu_Max, SIGNAL(clicked(bool)), this, SLOT(on_btnMenu_Max_clicked()));
-    connect(this->btnMenu_Close, SIGNAL(clicked(bool)), this, SLOT(on_btnMenu_Close_clicked()));
-}
-
-void QuiDialog::initForm()
-{
-    setIcon(QuiDialog::Lab_Ico, QUIConfig::IconMain, 11);
-//    setIcon(QuiDialog::BtnMenu, QUIConfig::IconMenu);
-    setIcon(QuiDialog::BtnMenu_Min, QUIConfig::IconMin, 15);
-    setIcon(QuiDialog::BtnMenu_Normal, QUIConfig::IconNormal, 15);
-    setIcon(QuiDialog::BtnMenu_Close, QUIConfig::IconClose, 15);
-
-    this->max = false;
-    this->location = this->geometry();
-    this->setProperty("from", true);
-    this->widgetTitle->setProperty("form", "title");
-    this->setWindowFlags((Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinMaxButtonsHint));
-
-    //设置标题及对齐方式
-    title = "全聚焦相控阵控制软件";
-    alignment = Qt::AlignLeft | Qt::AlignVCenter;
-    minHide = false;
-    mainWidget = 0;
-
-    setVisible(QuiDialog::BtnMenu, false);
-
-    //绑定事件过滤器监听鼠标移动
-    this->installEventFilter(this);
-    this->widgetTitle->installEventFilter(this);
-
-    //设置黑色皮肤
-    QString qssFile = ":/res/black.css";
-    qssFile = ":/res/black.css";
-    setStyle();
-}
-
 
 
 void QuiDialog::on_btnMenu_Min_clicked()
